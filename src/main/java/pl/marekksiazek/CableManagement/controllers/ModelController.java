@@ -76,7 +76,4 @@ public class ModelController {
 
             return ResponseEntity.ok().build();
     }
-
-
-
 }

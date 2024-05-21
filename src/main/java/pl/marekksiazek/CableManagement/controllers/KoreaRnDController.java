@@ -5,30 +5,30 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import pl.marekksiazek.CableManagement.entity.KoreaRnD;
 import pl.marekksiazek.CableManagement.entity.Model;
-import pl.marekksiazek.CableManagement.entity.PolishRnD;
+import pl.marekksiazek.CableManagement.repositories.KoreaRnDRepository;
 import pl.marekksiazek.CableManagement.repositories.ModelRepository;
-import pl.marekksiazek.CableManagement.repositories.PolishRnDRepository;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class PolishRnDController {
+public class KoreaRnDController {
 
     @Autowired
-    private PolishRnDRepository polishRnDRepository;
-
+    private KoreaRnDRepository koreaRnDRepository;
     @Autowired
     private ModelRepository modelRepository;
 
-    @GetMapping("/polishRnD")
-    public ResponseEntity<List<PolishRnD>> getPolishRnDModels(){
-        List<PolishRnD> listOfPolishRnD = polishRnDRepository.findAllRnDModels();
+
+    @GetMapping("/koreaRnD")
+    public ResponseEntity<List<KoreaRnD>> getPolishRnDModels(){
+        List<KoreaRnD> listOfPolishRnD = koreaRnDRepository.findAllRnDModels();
         return ResponseEntity.ok(listOfPolishRnD);
     }
 
-    @PutMapping("polishRnD/{modelSuffix}")
+    @PutMapping("koreaRnD/{modelSuffix}")
     @Transactional
     public ResponseEntity<Model> statusUpdate(@PathVariable String modelSuffix, @RequestBody Model updatedModel){
         boolean oldModel = modelRepository.findModelByModelSuffix(modelSuffix)
