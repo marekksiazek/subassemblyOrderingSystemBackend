@@ -27,7 +27,7 @@ public class ModelController {
         return ResponseEntity.ok(models);
     }
 
-    @GetMapping("models/{modelSuffix}")
+    @GetMapping("/models/{modelSuffix}")
     public ResponseEntity<Model> getModelById(@PathVariable String modelSuffix){
         Optional<Model> modelOptional = modelRepository.findModelByModelSuffix(modelSuffix);
 

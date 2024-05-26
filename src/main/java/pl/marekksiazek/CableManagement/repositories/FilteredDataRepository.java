@@ -10,21 +10,21 @@ public interface FilteredDataRepository extends JpaRepository<FilteredData, Stri
 
     @Query(value = "SELECT\n" +
             "  md.*,\n" +
-            "  pd.TOTAL,\n" +
-            "  pd.BOM\n" +
+            "  pd.total,\n" +
+            "  pd.bom\n" +
             "FROM\n" +
-            "  MODEL_DATABASE md\n" +
+            "  model_database md\n" +
             "JOIN\n" +
-            "  PRODUCTION_DATABASE pd\n" +
+            "  production_database pd\n" +
             "ON\n" +
-            "  md.MODEL_SUFFIX = pd.MODEL_SUFFIX\n" +
+            "  md.model_suffix = pd.model_suffix\n" +
             "WHERE\n" +
-            "  pd.TOTAL > 0\n" +
-            "  AND pd.BOM IN ('C', 'N')\n" +
+            "  pd.total > 0\n" +
+            "  AND pd.bom IN ('C', 'N')\n" +
             "  AND\n" +
             "  (\n" +
-            "    md.C_BOM_MODEL_SUFFIX IS NULL\n" +
-            "    OR md.C_BOM_MODEL_SUFFIX = ''\n" +
+            "    md.c_bom_model_suffix IS NULL\n" +
+            "    OR md.c_bom_model_suffix = ''\n" +
             "  )", nativeQuery = true)
     List<FilteredData> findFilteredData();
 }

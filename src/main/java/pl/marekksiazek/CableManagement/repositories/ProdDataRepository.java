@@ -12,9 +12,9 @@ public interface ProdDataRepository extends JpaRepository<ProdData, String> {
             nativeQuery = true)
     List<ProdData> findProdDataByShortSuffix(String shortSuffix);
 
-    @Query(value = "SELECT * FROM PRODUCTION_DATABASE\n" +
-            "WHERE TOTAL > 0\n" +
-            "AND BOM IN ('C', 'N')", nativeQuery = true)
+    @Query(value = "SELECT * FROM production_database\n" +
+            "WHERE total > 0\n" +
+            "AND bom IN ('C', 'N')", nativeQuery = true)
     List<ProdData> findFilteredProdData();
 
 

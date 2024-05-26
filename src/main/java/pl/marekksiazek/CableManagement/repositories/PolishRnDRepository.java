@@ -10,12 +10,12 @@ public interface PolishRnDRepository extends JpaRepository <PolishRnD, String> {
 
     @Query(value = "SELECT \n" +
             "md.*,\n" +
-            "pd.TOTAL,\n" +
-            "pd.BOM \n" +
-            "FROM MODEL_DATABASE md\n" +
-            "JOIN PRODUCTION_DATABASE pd\n" +
-            "ON md.MODEL_SUFFIX  = pd.MODEL_SUFFIX\n" +
-            "WHERE pd.TOTAL > 0" +
-            "AND pd.BOM IN ('C', 'N') AND status=2", nativeQuery = true)
+            "pd.total,\n" +
+            "pd.bom \n" +
+            "FROM model_database md\n" +
+            "JOIN production_database pd\n" +
+            "ON md.model_suffix  = pd.model_suffix\n" +
+            "WHERE pd.total > 0 " +
+            "AND pd.bom IN ('C', 'N') AND status=2", nativeQuery = true)
     List<PolishRnD> findAllRnDModels();
 }
